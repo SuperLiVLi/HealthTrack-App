@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.healthtrack.mapper.SportMapper">
+
+    <select id = "findSports" parameterType="map" resultType="com.example.healthtrack.model.Sport">
+        SELECT
+            s.sport_id, s.sport_name, s.calories_per_kg
+        FROM
+            sport s
+        WHERE  s.sport_name LIKE CONCAT('%', #{keyword}, '%')
+          AND s.calories_per_kg &gt;= #{minAmount}
+          AND s.calories_per_kg &lt;= #{maxAmount}
+        ORDER BY s.calories_per_kg
+    </select>
+
+    <insert id="insertTempSportTrack" parameterType="list">
+        INSERT INTO TempSportTrack (user_id, sport_id, start_time, end_time)
+        VALUES
+        <foreach collection="doSports" item="item" separator=",">
+            (#{userId}, #{item.sportId}, #{item.startTime}, #{item.endTime})
+        </foreach>
+    </insert>
+
+    <update id="addDoSports" statementType="CALLABLE">
+        {CALL AddDoSports(#{userId})}
+    </update>
+
+</mapper>

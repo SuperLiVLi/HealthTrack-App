@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.healthtrack.mapper.SportTrackMapper">
+
+    <select id="getUserAvgCalories" resultType="com.example.healthtrack.dto.UserAvgCaloriesDTO">
+        SELECT
+            COALESCE(AVG(total_intake), 0) AS avg_intake,
+            COALESCE(AVG(total_burn), 0) AS avg_burn
+        FROM
+            daily_calories
+        WHERE
+            user_id = #{userId} AND
+            calories_date BETWEEN DATE(#{startTime}) AND DATE(#{endTime})
+    </select>
+
+    <select id="getUserDailyCalories" resultType="com.example.healthtrack.dto.UserDailyCaloriesDTO">
+        SELECT
+            calories_date,
+            total_intake,
+            total_burn
+        FROM
+            daily_calories
+        WHERE
+            user_id = #{userId} AND
+            calories_date BETWEEN DATE(#{startTime}) AND DATE(#{endTime})
+    </select>
+
+
+</mapper>

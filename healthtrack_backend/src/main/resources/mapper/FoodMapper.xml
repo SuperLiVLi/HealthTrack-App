@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.healthtrack.mapper.FoodMapper">
+    <select id="findByKeyword" parameterType="map" resultType="com.example.healthtrack.model.Food">
+        SELECT fdc_id AS fdc_id, food_name, category_name FROM food
+        WHERE food.food_name LIKE CONCAT('%', #{keyword}, '%')
+              AND food.is_foundation = 1
+    </select>
+    <select id="findByKeywordAndCategory" parameterType="map" resultType="com.example.healthtrack.model.Food">
+        SELECT fdc_id AS fdc_id, food_name, category_name FROM food
+        WHERE food.food_name LIKE CONCAT('%', #{keyword}, '%')
+              AND food.category_name = #{categoryName}
+              AND food.is_foundation = 1
+    </select>
+    <select id = "findByKeywordFilter" parameterType="map" resultType="com.example.healthtrack.model.Food">
+        SELECT f.fdc_id, f.food_name, f.category_name
+        FROM
+            food f
+        JOIN
+            contains c ON f.fdc_id = c.fdc_id
+        JOIN
+            nutrient n ON c.nutrient_id = n.nutrient_id
+        WHERE  f.food_name LIKE CONCAT('%', #{keyword}, '%')
+               AND n.nutrient_name = #{metric}
+               AND c.amount &gt;= #{minAmount}
+               AND c.amount &lt;= #{maxAmount}
+               AND f.is_foundation = 1
+        ORDER BY n.nutrient_name DESC
+    </select>
+    <select id = "findByKeywordAndCategoryFilter" parameterType="map" resultType="com.example.healthtrack.model.Food">
+        SELECT
+            f.fdc_id, f.food_name, f.category_name
+        FROM
+            food f
+        JOIN
+            contains c ON f.fdc_id = c.fdc_id
+        JOIN
+            nutrient n ON c.nutrient_id = n.nutrient_id
+        WHERE  f.food_name LIKE CONCAT('%', #{keyword}, '%')
+               AND f.category_name = #{categoryName}
+               AND n.nutrient_name = #{metric}
+               AND c.amount &gt;= #{minAmount}
+               AND c.amount &lt;= #{maxAmount}
+               AND f.is_foundation = 1
+        ORDER BY n.nutrient_name DESC
+    </select>
+    <select id="getFoodNutrients" parameterType="map" resultType="com.example.healthtrack.dto.FoodNutrientDTO">
+        SELECT
+            f.fdc_id, f.food_name, f.category_name,
+            n.nutrient_id, n.nutrient_name, n.unit_name,
+            c.amount
+        FROM
+            food f
+        JOIN
+            contains c ON f.fdc_id = c.fdc_id
+        JOIN
+            nutrient n ON c.nutrient_id = n.nutrient_id
+        WHERE f.fdc_id = #{fdcId}
+              AND c.amount > 0
+              AND n.nutrient_id != 1062
+    </select>
+
+    <insert id="insertTempNutriTrack" parameterType="list">
+        INSERT INTO TempNutriTrack (user_id, fdc_id, store_time, intake_amount)
+        VALUES
+        <foreach collection="foodIntakes" item="item" separator=",">
+            (#{userId}, #{item.fdcId}, #{item.storeTime}, #{item.intakeAmount})
+        </foreach>
+    </insert>
+
+    <update id="addFoodIntakes" statementType="CALLABLE">
+        {CALL AddFoodIntakes(#{userId})}
+    </update>
+
+</mapper>

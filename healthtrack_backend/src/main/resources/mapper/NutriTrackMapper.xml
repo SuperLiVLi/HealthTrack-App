@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.healthtrack.mapper.NutriTrackMapper">
+
+    <select id="getUserAvgNutrient" resultType="com.example.healthtrack.dto.UserAvgNutrientDTO">
+        SELECT
+            n.nutrient_id,
+            COALESCE(AVG(dni.total_intake), 0) AS avg_intake,
+            n.unit_name
+        FROM
+            nutrient n
+                LEFT JOIN
+            daily_nutrient_intake dni
+            ON n.nutrient_id = dni.nutrient_id AND dni.user_id = #{userId} AND
+               dni.intake_date BETWEEN DATE(#{startTime}) AND DATE(#{endTime})
+        WHERE
+            n.nutrient_id = #{nutrientId}
+        GROUP BY
+            n.nutrient_id, n.unit_name;
+    </select>
+    <select id="getCategoryAmount" resultType="com.example.healthtrack.dto.CategoryAmountDTO">
+        SELECT category_name, COALESCE(AVG(sum_intake), 0) AS total_amount
+        FROM daily_category_intake
+        WHERE user_id = #{userId}
+          AND intake_date BETWEEN DATE(#{startTime}) AND DATE(#{endTime})
+        GROUP BY category_name
+    </select>
+    <select id="getUserNutriTrack" resultType="com.example.healthtrack.dto.UserNutriTrackDTO">
+        SELECT user_id, nutriTrack.fdc_id, food_name, category_name, store_time, intake_amount
+        FROM nutriTrack
+        JOIN food ON nutriTrack.fdc_id = food.fdc_id
+        WHERE user_id = #{userId}
+        ORDER BY nutriTrack.store_time DESC
+    </select>
+
+    <delete id="deleteUserNutriTrack" parameterType="map">
+        DELETE FROM nutriTrack
+        WHERE user_id = #{userId}
+          AND fdc_id = #{fdcId}
+          AND store_time = #{storeTime}
+    </delete>
+
+    <update id="UpdateDailyNutrientIntake" statementType="CALLABLE">
+        {CALL UpdateDailyNutrientIntake()}
+    </update>
+
+    <update id="UpdateDailyCalories" statementType="CALLABLE">
+        {CALL UpdateDailyCalories()}
+    </update>
+
+</mapper>
