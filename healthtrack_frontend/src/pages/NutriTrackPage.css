@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:wght@500&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.nutri-track-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 50px;
+}
+
+.nutri-track-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/public/pages_background/nutri_track_background.jpg') no-repeat center center;
+  background-size: cover;
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.date-picker-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.date-picker {
+  width: 50%;
+}
+
+.date-picker label {
+  display: block;
+  text-align: center;
+  /*margin-bottom: 5px;*/
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+.react-calendar {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: inherit
+}
+
+
+.react-calendar__tile--active,
+.react-calendar__tile--active:hover {
+  background-color: #2DCE89;
+  color: white;
+}
+
+
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  border: none;
+  background-color: #2DCE89;
+}
+
+
+.nutrition-cards-container {
+  display: flex;
+  flex-wrap: wrap;  /* Ensures that cards can wrap onto the next line */
+  gap: 30px;
+  justify-content: space-evenly;
+  width: 90%;
+  margin-left: auto;
+  margin-bottom: 50px;
+}
+
+/* Nutrition cards styling */
+.nutrition-card {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  flex: 0 0 calc(50% - 15px); /* Subtracts half the gap from 50% width */
+  max-width: 350px;
+}
+
+.nutrition-card:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-1px); /* Move the card up slightly to mimic a press */
+}
+
+/* Typography within cards */
+.nutrition-metric {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
+
+.nutrition-value {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px 0;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.nutrition-unit {
+  font-size: 16px;
+  color: #666;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Button styling */
+.submit-button {
+  padding: 8px 20px;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  background-color: #2DCE89;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  max-width: 630px;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.submit-button:hover {
+  background-color: #26b47f;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+.submit-button:active {
+  background-color: #1f9f72;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transform: translateY(1px);
+}
+
+/* Media query for responsive adjustments */
+@media (max-width: 768px) {
+  .date-picker-container {
+    flex-direction: column;
+  }
+
+  .start-date-picker, .end-date-picker {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .nutrition-cards-container {
+    grid-template-columns: 1fr; /* Single column on smaller screens */
+  }
+}
+
+
+.start-date-input {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 24px;
+  width: 100%; /* Full width of the parent */
+  padding: 12px 20px; /* Padding inside the input field */
+  padding-left: 50px; /* Increase left padding to make space for the icon */
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 50px; /* Rounded corners for the input field */
+  margin-bottom: 10px; /* Space below the input field */
+  background-color: #fff; /* White background */
+  outline: none; /* Remove the default focus outline */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+  background-image: url('/public/start_date_icon.svg');
+  background-position: 10px center;
+  background-repeat: no-repeat; /* Prevent the icon from repeating */
+}
+
+.start-date-input::placeholder {
+  padding-left: 10px;
+}
+
+.start-date-input:focus {
+  border-color: #bbb; /* Slightly darker border when focused */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Increased shadow to give a pressed-in effect */
+}
+
+.end-date-input {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 24px;
+  width: 100%; /* Full width of the parent */
+  padding: 12px 20px; /* Padding inside the input field */
+  padding-left: 50px; /* Increase left padding to make space for the icon */
+  border: 1px solid #ddd; /* Light grey border */
+  border-radius: 50px; /* Rounded corners for the input field */
+  margin-bottom: 10px; /* Space below the input field */
+  background-color: #fff; /* White background */
+  outline: none; /* Remove the default focus outline */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+  background-image: url('/public/end_date_icon.svg');
+  background-position: 10px center;
+  background-repeat: no-repeat; /* Prevent the icon from repeating */
+}
+
+.end-date-input::placeholder {
+  padding-left: 10px;
+}
+
+.end-date-input:focus {
+  border-color: #bbb; /* Slightly darker border when focused */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Increased shadow to give a pressed-in effect */
+}
+
+.nutri-track-data-container {
+  display: flex;
+  justify-content: space-between; /* Align items on both sides */
+}
+
+.pie-chart-container {
+  flex-basis: 50%; /* Half of the container width */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center chart vertically and horizontally */
+  width: 10px;
+  margin-bottom: 50px;
+  margin-left: 20px;
+}

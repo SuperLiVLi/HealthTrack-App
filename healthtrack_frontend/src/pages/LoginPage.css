@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:wght@500&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.login-page {
+    display: flex;
+    content: '';
+    position: fixed; /* let background image fill the container */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.illustration-section {
+    flex: 0.8;
+    background: url('/public/pages_background/login_background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.8;
+}
+
+.login-section {
+    flex: 0.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem;
+}
+
+.login-container {
+    max-width: 400px;
+    width: 100%;
+
+}
+
+.login-container h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-container p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1rem;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.login-success-message {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 1rem;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 10px; /* Rounded corners for the input field */
+    margin-bottom: 10px; /* Space below the input field */
+    outline: none; /* Remove the default focus outline */
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.login-container input:focus {
+    border-color: #2DCE89;
+    box-shadow: 0 0 8px rgba(45, 206, 137, 0.2);
+    outline: none;
+}
+
+.login-container button {
+    padding: 8px 20px; /* Slightly larger padding for a more prominent button */
+    font-weight: bold; /* Bold font for the button text */
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    background-color: #2DCE89; /* Mint green color */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 20px; /* Pill-shaped rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Transition for smooth effect on state changes */
+    width: 100%;
+}
+
+.login-container button:hover {
+    background-color: #26b47f; /* Slightly darker shade for interaction */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Larger shadow for a "raised" effect */
+    transform: translateY(-2px); /* Slightly raise the button to give a pressing effect */
+}
+
+.login-container button:active {
+    background-color: #1f9f72; /* Even darker for the active state */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Smaller shadow as if the button is being pressed */
+    transform: translateY(1px); /* Move the button down to mimic the press */
+}
+
+.signup-prompt {
+    text-align: center;
+    color: #757575;
+    cursor: default;
+    margin-top: 1rem;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.signup-prompt span {
+    color: #2DCE89;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.signup-prompt span:hover {
+    color: #26b47f;
+}
+
+.signup-prompt span:active {
+    color: #1f9f72;
+}

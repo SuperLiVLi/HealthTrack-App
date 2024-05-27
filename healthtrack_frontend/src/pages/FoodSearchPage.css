@@ -1,0 +1,27 @@
+.food-search-container {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.food-search-container::before {
+    content: '';
+    position: fixed; /* let background image fill the container */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/public/pages_background/food_search_background.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.search-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    margin-top: 200px;
+}

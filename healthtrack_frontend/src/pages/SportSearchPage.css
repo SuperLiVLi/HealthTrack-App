@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Poppins:wght@500&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.sport-search-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px; /* Maximum width for the search container */
+    gap: 10px; /* Space between children */
+    margin-left: auto; /* Center the container horizontally */
+    margin-right: auto; /* Center the container horizontally */
+    margin-top: 236px;
+}
+
+
+.sport-search-container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/public/pages_background/sport_search_background.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.sport-search-input {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 24px;
+    width: 100%; /* Full width of the parent */
+    padding: 12px 20px; /* Padding inside the input field */
+    padding-left: 50px; /* Increase left padding to make space for the icon */
+    border: 1px solid #ddd; /* Light grey border */
+    border-radius: 50px; /* Rounded corners for the input field */
+    margin-bottom: 10px; /* Space below the input field */
+    background-color: #fff; /* White background */
+    outline: none; /* Remove the default focus outline */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
+    background-image: url('/public/search_icon.svg');
+    background-position: 10px center;
+    background-repeat: no-repeat; /* Prevent the icon from repeating */
+}
+
+.sport-search-input::placeholder {
+    padding-left: 10px;
+}
+
+.sport-search-input:focus {
+    border-color: #bbb; /* Slightly darker border when focused */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Increased shadow to give a pressed-in effect */
+}
+
+/* Style for the search button */
+.sport-search-button {
+    padding: 8px 20px; /* Slightly larger padding for a more prominent button */
+    font-weight: bold; /* Bold font for the button text */
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    background-color: #2DCE89; /* Mint green color */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 20px; /* Pill-shaped rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Transition for smooth effect on state changes */
+}
+
+.sport-search-button:hover {
+    background-color: #26b47f; /* Slightly darker shade for interaction */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Larger shadow for a "raised" effect */
+    transform: translateY(-2px); /* Slightly raise the button to give a pressing effect */
+}
+
+.sport-search-button:active {
+    background-color: #1f9f72; /* Even darker for the active state */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Smaller shadow as if the button is being pressed */
+    transform: translateY(1px); /* Move the button down to mimic the press */
+}
+
+.sport-results-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    min-width: 500px;
+}
+
+.sport-slider-container {
+    width: 60%;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center; /* Align items vertically */
+    margin-left: 230px;
+    padding-bottom: 50px;
+}
+
+.sport-item {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #494949;
+    background-color: rgba(255, 255, 255, 0.8); /* default semi-transparent background */
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures spacing fills the container */
+    position: relative; /* Ensure this is set if not already */
+    height: 100%; /* Make sure the items have a defined height */
+}
+
+.sport-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sport-item:nth-child(n) { background-color: rgba(200, 238, 255, 0.7); } /* light blue */
+.sport-item:nth-child(2n) { background-color: rgba(255, 232, 235, 0.7); } /* light pink */
+.sport-item:nth-child(4n) { background-color: rgba(208, 255, 208, 0.7); } /* pale green */
+.sport-item:nth-child(5n) { background-color: rgba(255, 242, 210, 0.7); } /* pale yellow */
+
+
+.sport-name {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 10px 0;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.sport-calories {
+    font-size: 20px;
+    margin: 10px 0;
+    font-family: 'Nunito Sans', sans-serif;
+}

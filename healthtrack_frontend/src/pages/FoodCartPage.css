@@ -1,0 +1,106 @@
+.food-cart-container::before {
+    content: '';
+    position: fixed; /* let background image fill the container */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('/public/pages_background/food_search_background.jpg') no-repeat center center;
+    background-size: cover;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.food-cart-container {
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+    border-radius: 10px;
+    padding: 20px;
+    width: 90%;
+    max-width: 960px;
+    margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.food-cart-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.food-cart-card {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.food-cart-card:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cart-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2em;
+    color: #00000F;
+    margin: 0;
+    font-weight: bold;
+}
+
+.cart-food-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.food-add-info {
+    font-family: 'Nunito Sans', sans-serif;
+    color: #555;
+}
+
+.delete-button-container {
+    width: 20px; /* Smaller icon size */
+    height: 20px; /* Smaller icon size */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+.cart-submit-button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.cart-submit-button {
+    padding: 10px 20px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    background-color: #2DCE89;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.cart-submit-button:hover,
+.cart-submit-button:focus {
+    background-color: #26b47f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.cart-submit-button:active {
+    background-color: #1f9f72;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: translateY(1px);
+}
+
+.cart-message {
+    color: #757575; /* Grey color for the message */
+    font-family: 'Nunito Sans', sans-serif;
+    text-align: center;
+    margin-top: 15px;
+}

@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+.custom-navbar {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    background-color: #e3f2fd; /* Navigation bar background color */
+    font-weight: bold; /* Make all text in the navbar bold */
+    padding: 10px 20px; /* Padding around the entire navbar for better spacing */
+    z-index: 2;
+}
+
+.custom-navbar .navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 35px; /* Larger font size */
+    margin-right: 60px; /* Adds space between brand and nav links */
+    cursor: pointer;
+}
+
+.custom-navbar .nav-link {
+    color: #9d9d9d; /* Navigation link color */
+    transition: color 0.3s; /* Smooth transition for color change */
+    margin-right: 30px; /* Right margin to space out the nav links */
+    padding: 10px 15px; /* Padding to increase clickable area and spacing */
+}
+
+.custom-navbar .nav-link:hover {
+    color: #000000; /* Change hover color to a darker shade (near black) */
+}
+
+.login-button {
+    padding: 8px 20px; /* Slightly larger padding for a more prominent button */
+    font-weight: bold; /* Bold font for the button text */
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    background-color: #2DCE89; /* Mint green color */
+    color: white; /* White text */
+    border: none; /* No border */
+    border-radius: 10px; /* Pill-shaped rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Transition for smooth effect on state changes */
+    margin-right: -50px;
+}
+
+.login-button:hover {
+    background-color: #26b47f; /* Slightly darker shade for interaction */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Larger shadow for a "raised" effect */
+    transform: translateY(-2px); /* Slightly raise the button to give a pressing effect */
+}
+
+.login-button:active {
+    background-color: #1f9f72; /* Even darker for the active state */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Smaller shadow as if the button is being pressed */
+    transform: translateY(2px); /* Move the button down to mimic the press */
+}
+
+.custom-navbar .user-dropdown{
+    width: 5px;
+}
+
+.custom-navbar .user-dropdown .dropdown-toggle {
+    width: 5px;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    white-space: nowrap;
+}
+
+.custom-navbar .user-dropdown .dropdown-toggle .user-icon {
+    margin-right: 5px;
+}
+
+.custom-navbar .user-dropdown .dropdown-item {
+    color:  #212529;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.custom-navbar .user-dropdown .dropdown-item:hover,
+.custom-navbar .user-dropdown .dropdown-item:focus {
+    color: #212529;
+    background-color: #f8f9fa;
+}
+
+.custom-navbar .user-dropdown .dropdown-item:active {
+    color: #212529;
+    background-color: #d0d0d0;
+}
+
+.custom-navbar .dropdown-menu {
+    margin-top: -5px !important;
+}
